@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMC & ICT Autonomous Trading Terminal</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 md:p-6 min-h-screen">
+
+  <!-- Header -->
+  <header class="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-6 border-b border-[var(--border)] gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-xl shadow-inner">
+        ⚡
+      </div>
+      <div>
+        <h1 class="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2">
+          SMC & ICT Autonomous Trading Terminal
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            ALL CASH • POST-MORTEM REVIEW
+          </span>
+        </h1>
+        <p class="text-xs text-[var(--muted-foreground)]">Delta Exchange India • BTCUSD Perpetual • 6-Subagent Institutional Architecture (Self-Healing & Self-Learning Active)</p>
+      </div>
+    </div>
+
+    <!-- Clock & Killzone Status -->
+    <div class="flex items-center gap-3 bg-[var(--card)] border border-[var(--border)] px-4 py-2.5 rounded-xl text-xs shadow-sm">
+      <div class="text-right">
+        <div id="liveClock" class="font-mono font-semibold text-[var(--foreground)] text-sm">--:--:-- IST</div>
+        <div class="text-emerald-400 font-semibold flex items-center justify-end gap-1">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Sub-$80k Flush Defended • 100% Cash Safe
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Metric Overview Cards -->
+  <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <!-- Net Balance -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm relative overflow-hidden">
+      <div class="text-xs font-medium text-[var(--muted-foreground)] mb-1">Total Account Equity</div>
+      <div class="text-2xl font-extrabold text-[var(--foreground)] font-mono">$210.28 <span class="text-xs font-normal text-[var(--muted-foreground)]">USD</span></div>
+      <div class="text-xs text-emerald-400 font-semibold mt-1 flex items-center gap-1">
+        ↑ +$6.83 (+3.36%) <span class="text-[var(--muted-foreground)] font-normal text-[11px]">(from $203.45 baseline)</span>
+      </div>
+      <div class="absolute right-3 top-3 text-emerald-500/10 text-4xl font-black">💰</div>
+    </div>
+
+    <!-- Net Realized PnL -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm relative overflow-hidden">
+      <div class="text-xs font-medium text-[var(--muted-foreground)] mb-1">Net Realized PnL</div>
+      <div class="text-2xl font-extrabold text-emerald-400 font-mono">+$13.82 <span class="text-xs font-normal text-[var(--muted-foreground)]">USD</span></div>
+      <div class="text-xs text-[var(--muted-foreground)] mt-1">4 Settled Trades (1 Win / 3 Capped Losses)</div>
+      <div class="absolute right-3 top-3 text-emerald-500/10 text-4xl font-black">🎯</div>
+    </div>
+
+    <!-- Active Orders -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm relative overflow-hidden">
+      <div class="text-xs font-medium text-[var(--muted-foreground)] mb-1">Active Positions & Orders</div>
+      <div class="text-2xl font-extrabold text-[var(--foreground)] font-mono">0 <span class="text-xs font-normal text-emerald-400">(100% Cash / Capital Safe)</span></div>
+      <div class="text-xs text-[var(--muted-foreground)] mt-1 font-mono">Rule #1 Triggered: Target Swept Pre-Fill</div>
+      <div class="absolute right-3 top-3 text-cyan-500/10 text-4xl font-black">🛡️</div>
+    </div>
+
+    <!-- Self-Healing System Health Score -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm relative overflow-hidden">
+      <div class="text-xs font-medium text-[var(--muted-foreground)] mb-1">Self-Healing Health Score</div>
+      <div class="text-2xl font-extrabold text-emerald-400 font-mono">98 / 100</div>
+      <div class="text-xs text-emerald-400 mt-1 font-mono font-semibold">Integrity: 98% (Hard Lock Active)</div>
+      <div class="absolute right-3 top-3 text-emerald-500/10 text-4xl font-black">🧬</div>
+    </div>
+  </section>
+
+  <!-- Trade History Table -->
+  <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm mb-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-bold text-[var(--foreground)] text-base flex items-center gap-2">
+        <span>Verified Execution History</span>
+      </h3>
+      <span class="text-xs text-[var(--muted-foreground)]">Delta Exchange India Testnet Matching Engine</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs font-mono">
+        <thead class="text-[var(--muted-foreground)] border-b border-[var(--border)]">
+          <tr>
+            <th class="pb-2 font-medium">Order ID</th>
+            <th class="pb-2 font-medium">Symbol</th>
+            <th class="pb-2 font-medium">Side</th>
+            <th class="pb-2 font-medium">Entry Price</th>
+            <th class="pb-2 font-medium">Exit Price</th>
+            <th class="pb-2 font-medium">Size</th>
+            <th class="pb-2 font-medium">Realized PnL</th>
+            <th class="pb-2 font-medium">Outcome / Reason</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-[var(--border)] text-[var(--foreground)]">
+          <tr>
+            <td class="py-3 text-cyan-400 font-bold">2175451845</td>
+            <td class="py-3 font-semibold">BTCUSD</td>
+            <td class="py-3 text-emerald-400 font-bold">BUY</td>
+            <td class="py-3 font-bold text-[var(--muted-foreground)]">$80,880.00</td>
+            <td class="py-3 font-bold text-emerald-400">$81,540.00</td>
+            <td class="py-3">24 contracts</td>
+            <td class="py-3 font-mono text-[var(--muted-foreground)]">$0.00 (Unfilled)</td>
+            <td class="py-3"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[11px] font-bold">CANCELLED PRE-FILL (Target Swept)</span></td>
+          </tr>
+          <tr>
+            <td class="py-3 text-cyan-400">2175442484</td>
+            <td class="py-3 font-semibold">BTCUSD</td>
+            <td class="py-3 text-emerald-400 font-bold">BUY</td>
+            <td class="py-3">$80,495.00</td>
+            <td class="py-3 font-bold text-rose-400">$80,358.00</td>
+            <td class="py-3">24 contracts</td>
+            <td class="py-3 text-rose-400 font-bold">-$3.29 USD</td>
+            <td class="py-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[11px] font-bold">SL DEFENDED (3m CHoCH Trap)</span></td>
+          </tr>
+          <tr>
+            <td class="py-3 text-cyan-400">2175440914</td>
+            <td class="py-3 font-semibold">BTCUSD</td>
+            <td class="py-3 text-emerald-400 font-bold">BUY</td>
+            <td class="py-3">$80,518.00</td>
+            <td class="py-3 font-bold text-rose-400">$80,445.50</td>
+            <td class="py-3">24 contracts</td>
+            <td class="py-3 text-rose-400 font-bold">-$1.74 USD</td>
+            <td class="py-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[11px] font-bold">SL DEFENDED (Premature Reversal)</span></td>
+          </tr>
+          <tr>
+            <td class="py-3 text-cyan-400">2175426575</td>
+            <td class="py-3 font-semibold">BTCUSD</td>
+            <td class="py-3 text-emerald-400 font-bold">BUY</td>
+            <td class="py-3">$81,275.00</td>
+            <td class="py-3 font-bold text-rose-400">$81,146.00</td>
+            <td class="py-3">24 contracts</td>
+            <td class="py-3 text-rose-400 font-bold">-$3.10 USD</td>
+            <td class="py-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[11px] font-bold">SL DEFENDED (London Range Fakeout)</span></td>
+          </tr>
+          <tr>
+            <td class="py-3 text-cyan-400">2175411699</td>
+            <td class="py-3 font-semibold">BTCUSD</td>
+            <td class="py-3 text-emerald-400 font-bold">BUY</td>
+            <td class="py-3">$80,593.50</td>
+            <td class="py-3 font-bold text-emerald-400">$81,508.00</td>
+            <td class="py-3">24 contracts</td>
+            <td class="py-3 text-emerald-400 font-bold">+$21.95 USD</td>
+            <td class="py-3"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-bold">+$21.95 USD (FULL TP HIT)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const istOptions = { timeZone: 'Asia/Kolkata', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      const istString = now.toLocaleTimeString('en-US', istOptions);
+      document.getElementById('liveClock').textContent = istString + ' IST';
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

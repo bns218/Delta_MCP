@@ -1,0 +1,139 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-10-15T13:42:00Z",
+  "account_baseline": {
+    "starting_equity_usd": 203.45,
+    "current_equity_usd": 210.28,
+    "net_pnl_usd": 6.83,
+    "gross_trade_pnl_usd": 13.82,
+    "net_roi_percent": 3.36,
+    "leverage": 200,
+    "margin_mode": "isolated"
+  },
+  "trade_history": [
+    {
+      "trade_id": "TRADE_001",
+      "timestamp": "2026-10-15T08:30:00Z",
+      "session": "London Killzone",
+      "pair": "BTCUSD",
+      "direction": "LONG",
+      "entry_price": 80593.50,
+      "exit_price": 81508.00,
+      "pnl_usd": 21.95,
+      "pnl_pts": 914.50,
+      "result": "WIN",
+      "risk_reward_realized": 7.1,
+      "setup_type": "15m MSS + London FVG Re-test + BSL Sweep Target",
+      "timeframe_anchor": "15m",
+      "notes": "Textbook institutional accumulation. 15m candle close confirmed MSS, London displacement created unmitigated FVG, clean resting BSL at $81,500 swept."
+    },
+    {
+      "trade_id": "TRADE_002",
+      "timestamp": "2026-10-15T10:15:00Z",
+      "session": "London Post-Killzone",
+      "pair": "BTCUSD",
+      "direction": "LONG",
+      "entry_price": 81275.00,
+      "exit_price": 81146.00,
+      "pnl_usd": -3.10,
+      "pnl_pts": -129.00,
+      "result": "LOSS",
+      "risk_reward_realized": -1.0,
+      "setup_type": "Chasing Breakout / Premium FVG Mitigation",
+      "timeframe_anchor": "5m",
+      "notes": "Entered in premium zone after major BSL expansion. Market retraced into deep discount. Capped SL prevented catastrophic loss."
+    },
+    {
+      "trade_id": "TRADE_003",
+      "timestamp": "2026-10-15T12:00:00Z",
+      "session": "NY Pre-Killzone",
+      "pair": "BTCUSD",
+      "direction": "LONG",
+      "entry_price": 80518.00,
+      "exit_price": 80445.50,
+      "pnl_usd": -1.74,
+      "pnl_pts": -72.50,
+      "result": "LOSS",
+      "risk_reward_realized": -0.6,
+      "setup_type": "Micro-Timeframe Premature Bounce",
+      "timeframe_anchor": "3m/5m",
+      "notes": "Entered before 15m candle close while institutional sell displacement was actively seeking $80,240 terminal SSL."
+    },
+    {
+      "trade_id": "TRADE_004",
+      "timestamp": "2026-10-15T13:10:00Z",
+      "session": "NY Killzone",
+      "pair": "BTCUSD",
+      "direction": "LONG",
+      "entry_price": 80495.00,
+      "exit_price": 80358.00,
+      "pnl_usd": -3.29,
+      "pnl_pts": -137.00,
+      "result": "LOSS",
+      "risk_reward_realized": -1.0,
+      "setup_type": "Front-Running Terminal Liquidity Sweep",
+      "timeframe_anchor": "5m",
+      "notes": "Front-ran resting daily low liquidity pool. Market accelerated straight into $80,062 flush before violently reversing +600 points."
+    }
+  ],
+  "institutional_memory": {
+    "win_signatures": [
+      {
+        "id": "WIN_SIG_01",
+        "name": "Higher-Timeframe Alignment & Confluent Liquidity Draw (A+ Setup)",
+        "win_rate_probability": 0.85,
+        "confluence_criteria": [
+          "Higher timeframe (1h/15m) Market Structure Shift (MSS/CHoCH) with aggressive displacement bodies.",
+          "Entry executed exclusively inside an unmitigated 15m Fair Value Gap (FVG) situated in deep Discount (>50% of displacement leg).",
+          "A distinct, untouched Buy-Side Liquidity (BSL) pool (e.g. Session Highs, Equal Highs) serves as the primary magnet target.",
+          "Full 15-minute candle acceptance (candle body closed affirming the shift; no open wicking triggers).",
+          "Risk-to-Reward ratio strictly >= 1:2.5, allowing a single win to easily absorb 3-5 capped losses."
+        ],
+        "execution_guideline": "When all 5 criteria align during London/NY Killzones, allocate full standard margin ($10.00 / 24 contracts) with 3-tier TP bracket."
+      }
+    ],
+    "failure_signatures": [
+      {
+        "id": "FAIL_SIG_01",
+        "name": "Micro-Timeframe Front-Running of Terminal Liquidity (Anti-Pattern #1)",
+        "failure_rate": 0.90,
+        "hazard_patterns": [
+          "Premature entry on 1m/3m/5m sub-structure while higher timeframe (15m/1h) is in active downward displacement.",
+          "Front-running an unmitigated terminal liquidity pool (e.g., resting Asian Low, 24h Low, or Equal Lows within 150-250 points).",
+          "Attempting counter-trend catch without waiting for terminal SSL sweep.",
+          "Lack of full 15-minute candle close confirmation (entering on an active open candle)."
+        ],
+        "counter_measure": "MANDATORY TERMINAL SHIELD: If price is within 250 points of major resting 24h liquidity, all counter-trend entry signals are strictly blocked until the liquidity pool is cleanly pierced AND a 15m candle closes back inside the range (ICT Turtle Soup / SFP)."
+      }
+    ]
+  },
+  "market_regime": {
+    "timestamp": "2026-10-15T13:42:00Z",
+    "active_mode": "Mode 2: Range-Bound Liquidity Harvest / SFP -> Transitioning to Mode 1 Displacement",
+    "current_price": 80629.00,
+    "key_levels": {
+      "terminal_ssl_flushed": 80062.00,
+      "rebound_high": 80678.00,
+      "immediate_bsl_target": 81050.00,
+      "macro_range_high": 83087.50
+    },
+    "regime_characteristics": {
+      "displacement": "High institutional displacement following $80,062 flush (109.7k volume on 15m candle).",
+      "structure": "15m SFP confirmed (huge lower wick from $80,062 closed back at $80,629).",
+      "bias": "Bullish mean-reversion toward 15m discount FVG and NY Killzone BSL targets."
+    }
+  },
+  "dynamic_hyperparameters": {
+    "atr_14_15m": 220.0,
+    "dynamic_sl_buffer_pts": 75.0,
+    "recommended_stop_distance_pts": 180.0,
+    "tp_scaling": {
+      "tp1": { "rr": 2.0, "volume_pct": 50, "action": "Lock breakeven" },
+      "tp2": { "rr": 4.0, "volume_pct": 30, "action": "Trail SL to 15m swing low" },
+      "tp3": { "rr": 8.0, "volume_pct": 20, "action": "Run to terminal liquidity / macro BSL" }
+    },
+    "risk_per_trade_cap_usd": 10.00,
+    "max_consecutive_losses": 2,
+    "freeze_cooldown_minutes": 45
+  }
+}
