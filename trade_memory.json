@@ -108,25 +108,27 @@
     ]
   },
   "market_regime": {
-    "timestamp": "2026-10-15T13:42:00Z",
-    "active_mode": "Mode 2: Range-Bound Liquidity Harvest / SFP -> Transitioning to Mode 1 Displacement",
-    "current_price": 80629.00,
+    "timestamp": "2026-10-16T04:03:00Z",
+    "active_mode": "Mode 2: Range-Bound Liquidity Harvest / Asian Consolidation after Macro Flush",
+    "current_price": 82164.00,
     "key_levels": {
-      "terminal_ssl_flushed": 80062.00,
-      "rebound_high": 80678.00,
-      "immediate_bsl_target": 81050.00,
-      "macro_range_high": 83087.50
+      "macro_flush_low": 79750.00,
+      "asian_range_low": 82040.00,
+      "asian_range_high": 82660.00,
+      "immediate_bsl_target": 82660.00,
+      "immediate_ssl_target": 82040.00
     },
     "regime_characteristics": {
-      "displacement": "High institutional displacement following $80,062 flush (109.7k volume on 15m candle).",
-      "structure": "15m SFP confirmed (huge lower wick from $80,062 closed back at $80,629).",
-      "bias": "Bullish mean-reversion toward 15m discount FVG and NY Killzone BSL targets."
+      "displacement": "High-volatility expansion from $79,750 flush followed by Asian range consolidation ($82,040 - $82,660).",
+      "structure": "Asian session range equilibrium. Candle ranges 150-250 points, ATR_15m ~165 points.",
+      "bias": "Range boundary harvest (Turtle Soup / SFP) favored at extremes ($82,040 SSL / $82,660 BSL). Stand aside in mid-range equilibrium."
     }
   },
   "dynamic_hyperparameters": {
-    "atr_14_15m": 220.0,
-    "dynamic_sl_buffer_pts": 75.0,
-    "recommended_stop_distance_pts": 180.0,
+    "atr_14_15m": 165.0,
+    "dynamic_sl_buffer_formula": "max(50.0, 0.35 * ATR_15m)",
+    "dynamic_sl_buffer_pts": 57.75,
+    "recommended_stop_distance_pts": 165.0,
     "tp_scaling": {
       "tp1": { "rr": 2.0, "volume_pct": 50, "action": "Lock breakeven" },
       "tp2": { "rr": 4.0, "volume_pct": 30, "action": "Trail SL to 15m swing low" },
