@@ -104,6 +104,17 @@
           "Lack of full 15-minute candle close confirmation (entering on an active open candle)."
         ],
         "counter_measure": "MANDATORY TERMINAL SHIELD: If price is within 250 points of major resting 24h liquidity, all counter-trend entry signals are strictly blocked until the liquidity pool is cleanly pierced AND a 15m candle closes back inside the range (ICT Turtle Soup / SFP)."
+      },
+      {
+        "id": "FAIL_SIG_02",
+        "name": "Bypassing Human-in-the-Loop Confirmation & Misinterpreting Status Inquiries as Execution Orders (Anti-Pattern #2)",
+        "failure_rate": 1.00,
+        "hazard_patterns": [
+          "Misinterpreting an informational user question ('are you start trading or not?') as an execution authorization command.",
+          "Subagents releasing internal technical clearances and automatically routing live orders to Delta Exchange without explicit user confirmation.",
+          "Trigger-happy execution bias during Killzone windows without user sign-off."
+        ],
+        "counter_measure": "MANDATORY HUMAN-IN-THE-LOOP (HITL) HARD GATE: Under no circumstances may any order (market or limit) be transmitted to Delta Exchange without direct, explicit, written user trade authorization (e.g. 'Execute trade', 'Yes, place order'). Informational inquiries must strictly receive informational responses with zero automated order placement."
       }
     ]
   },

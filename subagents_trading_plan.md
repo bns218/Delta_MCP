@@ -105,12 +105,15 @@ The system enforces every core principle across **SMC**, **ICT**, and **Price Ac
   * *Post-Fill:* Fires an immediate **Market Exit** if a 5m candle closes through the entry FVG (FVG Inversion), saving the account from absorbing the full stop loss.
 
 ### 4. `smc_risk_executor`
-* **Mission:** Portfolio sizing and autonomous order routing.
+* **Mission:** Portfolio sizing and order routing.
+* **MANDATORY AUTHORIZATION GATE (HUMAN-IN-THE-LOOP):**
+  * NO order may ever be submitted to Delta Exchange without explicit, unambiguous user confirmation.
+  * Status inquiries (e.g. "are you trading or not?") are strictly informational and must NEVER trigger order execution.
 * **Risk Envelope:**
   * Fixed margin constraint: Max **$10 USD** margin per trade.
   * Leverage: **200x isolated**.
   * Minimum R:R filter: Strict rejection of any setup with $< 1:2.5$ R:R.
-* **Execution:** Routes atomic bracket orders to Delta Exchange via MCP (`place_order`).
+* **Execution:** Routes atomic bracket orders to Delta Exchange via MCP (`place_order`) ONLY after written user consent.
 
 ### 5. `smc_portfolio_monitor`
 * **Mission:** Active position life-cycle surveillance.

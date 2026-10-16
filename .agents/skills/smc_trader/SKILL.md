@@ -34,6 +34,11 @@ This skill allows the agent to autonomously analyze live market data and execute
 
 ## Execution Guardrails (Delta Exchange MCP)
 
+0.  **Human-in-the-Loop Explicit Confirmation (STRICT & UNBREAKABLE RULE):**
+    *   NO order (market, limit, or bracket) may EVER be submitted to Delta Exchange without EXPLICIT, UNAMBIGUOUS user authorization (e.g. "Execute trade", "Place order", "Yes, proceed").
+    *   User status questions (e.g. "are you starting trading or not", "what is current status?", "is trading started?") are STRICTLY INFORMATIONAL and MUST NEVER be interpreted as execution authorization.
+    *   Subagents (Scenario Architect, Adaptive Strategist, Self-Healing Supervisor) may synthesize setups and release internal clearances, but the Risk Executor is HARD-LOCKED until the user gives direct, written trade approval.
+
 1.  **Risk & Capital Cap:** Maximum $10.00 USD margin allocation per trade at 200x isolated leverage (24 contracts = 0.024 BTC).
 2.  **Minimum Risk-to-Reward:** Strictly $\ge 1:2.5$.
 3.  **Bracket Protection:** Every order MUST have a hard Stop Loss and Take Profit attached upon placement (`place_order` with bracket parameters or `place_bracket_order`).
