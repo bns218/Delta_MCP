@@ -17,9 +17,9 @@
       <div>
         <h1 class="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2">
           SMC & ICT Autonomous Trading Terminal
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            ACTIVE POSITION: BTCUSD LONG @ $82,510 (+25.5 PTS IN PROFIT • UNREALIZED +$0.61)
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20">
+            <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+            45-MIN COOLDOWN FREEZE ENGAGED (2 LOSSES TRIGGER CIRCUIT BREAKER • CAPITAL 100% SAFE IN CASH)
           </span>
         </h1>
         <p class="text-xs text-[var(--muted-foreground)]">Delta Exchange India • BTCUSD Perpetual • 10-Subagent Institutional Desk (Orderflow, SMT & Surveillance Active)</p>
@@ -43,9 +43,9 @@
     <!-- Net Balance -->
     <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm relative overflow-hidden">
       <div class="text-xs font-medium text-[var(--muted-foreground)] mb-1">Total Account Equity</div>
-      <div class="text-2xl font-extrabold text-[var(--foreground)] font-mono">$199.18 <span class="text-xs font-normal text-[var(--muted-foreground)]">USD</span></div>
+      <div class="text-2xl font-extrabold text-[var(--foreground)] font-mono">$194.69 <span class="text-xs font-normal text-[var(--muted-foreground)]">USD</span></div>
       <div class="text-xs text-[var(--muted-foreground)] font-semibold mt-1 flex items-center gap-1">
-        -$4.27 (-2.10%) <span class="text-[var(--muted-foreground)] font-normal text-[11px]">(from $203.45 baseline)</span>
+        -$8.76 (-4.31%) <span class="text-[var(--muted-foreground)] font-normal text-[11px]">(from $203.45 baseline)</span>
       </div>
       <div class="absolute right-3 top-3 text-emerald-500/10 text-4xl font-black">💰</div>
     </div>
@@ -53,16 +53,16 @@
     <!-- Net Realized PnL -->
     <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm relative overflow-hidden">
       <div class="text-xs font-medium text-[var(--muted-foreground)] mb-1">Net Realized PnL</div>
-      <div class="text-2xl font-extrabold text-emerald-400 font-mono">+$4.38 <span class="text-xs font-normal text-[var(--muted-foreground)]">USD</span></div>
-      <div class="text-xs text-[var(--muted-foreground)] mt-1">6 Settled Trades (1 Big Win / 5 Capped Losses)</div>
+      <div class="text-2xl font-extrabold text-[var(--foreground)] font-mono">-$0.10 <span class="text-xs font-normal text-[var(--muted-foreground)]">USD</span></div>
+      <div class="text-xs text-[var(--muted-foreground)] mt-1">7 Settled Trades (1 Big Win / 6 Capped Losses)</div>
       <div class="absolute right-3 top-3 text-emerald-500/10 text-4xl font-black">🎯</div>
     </div>
 
     <!-- Active Orders -->
     <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm relative overflow-hidden">
       <div class="text-xs font-medium text-[var(--muted-foreground)] mb-1">Active Positions & Orders</div>
-      <div class="text-2xl font-extrabold text-emerald-400 font-mono">1 Long <span class="text-xs font-normal text-emerald-400">(+$0.61 Unrealized PnL)</span></div>
-      <div class="text-xs text-[var(--muted-foreground)] mt-1 font-mono">Filled @ $82,510 (TP: $82,850 | SL: $82,390)</div>
+      <div class="text-2xl font-extrabold text-amber-400 font-mono">0 <span class="text-xs font-normal text-amber-400">(Cooldown Freeze Active)</span></div>
+      <div class="text-xs text-[var(--muted-foreground)] mt-1 font-mono">Orders Locked for 45m • Capital Safe in Cash</div>
       <div class="absolute right-3 top-3 text-cyan-500/10 text-4xl font-black">🛡️</div>
     </div>
 
@@ -98,6 +98,16 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-[var(--border)] text-[var(--foreground)]">
+          <tr>
+            <td class="py-3 text-cyan-400 font-bold">2175872935</td>
+            <td class="py-3 font-semibold">BTCUSD</td>
+            <td class="py-3 text-emerald-400 font-bold">BUY</td>
+            <td class="py-3 font-bold text-[var(--muted-foreground)]">$82,510.00</td>
+            <td class="py-3 font-bold text-rose-400">$82,384.50</td>
+            <td class="py-3">24 contracts</td>
+            <td class="py-3 text-rose-400 font-bold">-$4.48 USD</td>
+            <td class="py-3"><span class="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[11px] font-bold">SL DEFENDED (Discount FVG Sweep)</span></td>
+          </tr>
           <tr>
             <td class="py-3 text-cyan-400 font-bold">2175870472</td>
             <td class="py-3 font-semibold">BTCUSD</td>

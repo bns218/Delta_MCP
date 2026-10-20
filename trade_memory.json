@@ -3,10 +3,10 @@
   "last_updated": "2026-10-15T13:42:00Z",
   "account_baseline": {
     "starting_equity_usd": 203.45,
-    "current_equity_usd": 199.18,
-    "net_pnl_usd": -4.27,
-    "gross_trade_pnl_usd": 4.38,
-    "net_roi_percent": -2.10,
+    "current_equity_usd": 194.69,
+    "net_pnl_usd": -8.76,
+    "gross_trade_pnl_usd": -0.10,
+    "net_roi_percent": -4.31,
     "leverage": 200,
     "margin_mode": "isolated"
   },
@@ -106,6 +106,22 @@
       "setup_type": "L2 Orderbook Bid Wall Absorption Shelf",
       "timeframe_anchor": "15m",
       "notes": "Filled at $82,740. Rebounded to $82,916 (+176 pts / +$4.22 USD peak profit), but fell short of $82,965 TP. Retraced and swept resting stops at $82,647 before immediate bounce back to $82,711. Hard SL strictly capped downside risk to -$3.70 USD."
+    },
+    {
+      "trade_id": "TRADE_007",
+      "timestamp": "2026-10-20T19:25:00Z",
+      "session": "Asian Session Transition",
+      "pair": "BTCUSD",
+      "direction": "LONG",
+      "entry_price": 82510.00,
+      "exit_price": 82384.50,
+      "pnl_usd": -4.48,
+      "pnl_pts": -125.50,
+      "result": "LOSS",
+      "risk_reward_realized": -1.0,
+      "setup_type": "15m Discount FVG Re-test",
+      "timeframe_anchor": "15m",
+      "notes": "Filled at $82,510. Pushed up to $82,543.50 (+33.5 pts profit) before heavy sell sweep broke $82,425 shelf towards $82,308 Equilibrium. Hard SL held firmly at $82,384.50, preventing further drawdown. 2 consecutive losses trigger mandatory 45-minute session cooldown freeze."
     }
   ],
   "institutional_memory": {
