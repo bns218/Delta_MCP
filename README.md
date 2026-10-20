@@ -3,7 +3,7 @@
 [![Status: Production-Grade](https://img.shields.io/badge/Status-Operational-brightgreen.svg)]()
 [![Exchange: Delta Exchange](https://img.shields.io/badge/Exchange-Delta%20Exchange%20India-blue.svg)]()
 [![Model Context Protocol: Enabled](https://img.shields.io/badge/MCP-delta--exchange--mcp-orange.svg)]()
-[![Architecture: 6--Subagent Fleet](https://img.shields.io/badge/Architecture-Autonomous%20Subagents-purple.svg)]()
+[![Architecture: 7--Subagent Fleet](https://img.shields.io/badge/Architecture-7--Subagent%20Fleet-purple.svg)]()
 [![Risk: Strict Max Margin Cap](https://img.shields.io/badge/Risk-Max%20$10%20Margin%20Cap-red.svg)]()
 
 Autonomous, institutional-grade algorithmic trading architecture built for **Delta Exchange India** (`BTCUSD` perpetual). The system fuses **Smart Money Concepts (SMC)**, **Inner Circle Trader (ICT)** methodologies, **Classical Price Action**, and **Real-Time Macro & Crypto Sentiment Analysis** into a coordinated multi-agent hierarchy with closed-loop **Self-Healing** and **Self-Learning** capabilities.
@@ -42,6 +42,15 @@ The system operates strictly via specialized AI subagents communicating over the
                                                 │
                                                 ▼
                            ┌─────────────────────────────────────────┐
+                           │   Trade Agent (Autonomous Decision)     │
+                           │   • Multi-Agent Decision Synthesis      │
+                           │   • Conviction Scoring (0% - 100%)      │
+                           │   • Action: BUY / SELL / STAND ASIDE    │
+                           │   • MANDATORY Human-in-the-Loop Gate    │
+                           └────────────────────┬────────────────────┘
+                                                │ (User Authorization)
+                                                ▼
+                           ┌─────────────────────────────────────────┐
                            │       Risk & Execution Officer          │
                            │   • Strict <= $10 Margin Cap            │
                            │   • 200x Isolated Leverage              │
@@ -75,16 +84,21 @@ The system operates strictly via specialized AI subagents communicating over the
    - Synthesizes tactical execution cards with strict $R:R \ge 1:2.5$.
    - Enforces pre-fill invalidations (e.g. cancels resting limit orders if the profit target is front-run prior to entry).
 
-4. **[`Risk & Execution Officer`](.agents/agents/smc_risk_executor/agent.md)**
+4. **[`Trade Agent (Autonomous Decision Officer)`](.agents/agents/trade_agent/agent.md)**
+   - Synthesizes intelligence across sentiment, structure, and strategy to take its own independent executive trade decision (BUY, SELL, or STAND ASIDE).
+   - Calculates a quantitative Decision Conviction Score (0% – 100%).
+   - **Enforces the Human-in-the-Loop Gate:** Formulates the complete trade proposal and requires explicit user confirmation before any order can be dispatched.
+
+5. **[`Risk & Execution Officer`](.agents/agents/smc_risk_executor/agent.md)**
    - Manages live order execution on Delta Exchange India testnet.
    - Enforces strict capital preservation: $\le \$10.00\text{ USD}$ margin per trade at 200x leverage.
    - Implements native bracket orders with automatic OCO (One-Cancels-the-Other) protective stops.
 
-5. **[`Self-Healing Supervisor`](.agents/agents/smc_self_healing_supervisor/agent.md)**
+6. **[`Self-Healing Supervisor`](.agents/agents/smc_self_healing_supervisor/agent.md)**
    - Monitors session health and detects behavioral anomalies (e.g. over-trading, counter-trend execution).
    - Enforces a mandatory **2-Loss 45-Minute Session Cooldown Freeze** and shields entries near unmitigated 24-hour extremes.
 
-6. **[`Self-Learning Optimizer`](.agents/agents/smc_self_learning_optimizer/agent.md)**
+7. **[`Self-Learning Optimizer`](.agents/agents/smc_self_learning_optimizer/agent.md)**
    - Ingests settled trade data and updates [`trade_memory.json`](trade_memory.json).
    - Calibrates dynamic ATR buffers, trailing stop mechanics, and regime-based position sizing.
 

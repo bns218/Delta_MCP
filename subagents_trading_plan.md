@@ -104,7 +104,18 @@ The system enforces every core principle across **SMC**, **ICT**, and **Price Ac
   * *Pre-Fill:* Cancels pending limit if target is front-run or opposing MSS prints.
   * *Post-Fill:* Fires an immediate **Market Exit** if a 5m candle closes through the entry FVG (FVG Inversion), saving the account from absorbing the full stop loss.
 
-### 4. `smc_risk_executor`
+### 4. `trade_agent` (Autonomous Decision Officer with Human Involvement)
+* **Mission:** Synthesizes multi-agent intelligence, takes independent executive trade decisions (BUY, SELL, STAND ASIDE), and manages the Human-in-the-Loop approval gate.
+* **Role in Architecture:** Sits directly between Strategy Formulation (`smc_adaptive_strategist`) and Execution (`smc_risk_executor`).
+* **Decision Synthesis:**
+  * Calculates an executive **Decision Conviction Score (0% – 100%)**.
+  * Formulates the concrete Decision Blueprint (Direction, Entry, Stop Loss with ATR buffer, Multi-Tier Targets).
+* **MANDATORY HUMAN-IN-THE-LOOP (HITL) GATE:**
+  * Presents the decision directly to the human trader for authorization.
+  * Under NO circumstances dispatches live orders to Delta Exchange without explicit written user confirmation.
+  * Upon confirmation, routes verified order payload to `smc_risk_executor`.
+
+### 5. `smc_risk_executor`
 * **Mission:** Portfolio sizing and order routing.
 * **MANDATORY AUTHORIZATION GATE (HUMAN-IN-THE-LOOP):**
   * NO order may ever be submitted to Delta Exchange without explicit, unambiguous user confirmation.
@@ -115,9 +126,11 @@ The system enforces every core principle across **SMC**, **ICT**, and **Price Ac
   * Minimum R:R filter: Strict rejection of any setup with $< 1:2.5$ R:R.
 * **Execution:** Routes atomic bracket orders to Delta Exchange via MCP (`place_order`) ONLY after written user consent.
 
-### 5. `smc_portfolio_monitor`
-* **Mission:** Active position life-cycle surveillance.
-* **Surveillance:** Tracks mark price, unrealized PnL, trails Stop Loss upon TP1 milestone, and monitors liquidation distance.
+### 6. `smc_portfolio_monitor` / `smc_self_healing_supervisor`
+* **Mission:** Active position life-cycle surveillance, consecutive-loss circuit breakers, and systemic health auditing.
+
+### 7. `smc_self_learning_optimizer`
+* **Mission:** Ingests trade outcomes into `trade_memory.json`, dynamically calibrates ATR buffers, and classifies active market regimes.
 
 ---
 
