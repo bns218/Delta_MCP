@@ -1,76 +1,86 @@
 ---
 name: smc-trader
 description: >-
-  Provides the agent with the ability to autonomously scan for Smart Money Concepts (SMC) 
-  setups like Fair Value Gaps (FVG) and execute them as paper trades on Delta Exchange via MCP.
+  Provides the agent and subagent fleet with the full institutional framework for Smart Money Concepts (SMC),
+  Inner Circle Trader (ICT), Price Action, Order Flow Depth, and SMT Divergence trading on Delta Exchange India.
 ---
 
-# SMC & ICT Autonomous Trader Skill (Hardened Institutional Guardrails & Self-Learning)
+# Institutional SMC, ICT & Price Action Trading Desk (10-Subagent Architecture)
 
-This skill allows the agent to autonomously analyze live market data and execute Smart Money Concepts (SMC) trades on Delta Exchange with institutional risk guardrails, continuous learning memory, and dynamic hyperparameter optimization.
+This master skill governs the autonomous market scanning, structural mapping, tactical strategy formulation, decision synthesis, and execution on Delta Exchange India (`BTCUSD` perpetual).
 
-## Core Strategy & Timeframe Hierarchy
+---
 
-1.  **Timeframe Hierarchy (Strict Rule):**
-    *   **Macro Bias & Order Blocks:** 1-Hour (1h) candles.
-    *   **Market Structure Shift (MSS/CHoCH) & Confirmation:** 15-Minute (15m) candles. **MANDATORY**: No trade may be executed without a full 15-minute candle close confirmation.
-    *   **Execution Tuning Only:** 5-Minute (5m) candles for discount entry / FVG refinement.
-    *   *STRICT PROHIBITION:* 1-minute and 3-minute candles are strictly prohibited for structural reversal entries. They are noise during high-volume sessions.
+## 🏛️ 10-Subagent Multi-Agent Swarm
 
-2.  **Killzones (IST Time):**
-    *   London Session: 12:30 PM - 3:30 PM IST (07:00 - 10:00 UTC)
-    *   New York Session: 6:30 PM - 9:30 PM IST (13:00 - 16:00 UTC)
-    *   *Rule:* Do not place trades outside of these high-volume killzones.
+The trading desk operates as an interconnected AI hierarchy:
+1. **Crypto News Sentiment Analyst:** Real-time macro drivers, DXY, interest rates, and institutional spot ETF flows (-10 to +10 score).
+2. **SMC/ICT Scenario Architect:** Higher Timeframe (1h/15m) bias, Market Structure Shifts (MSS/CHoCH), FVGs, Order Blocks, and Liquidity Pools (BSL/SSL).
+3. **Order Flow & Liquidity Depth Analyst:** Level-2 orderbook depth ratio, bid/ask imbalances, passive resting absorption walls, and Open Interest velocity.
+4. **SMT Intermarket Divergence Analyst:** Cross-asset correlation (BTCUSD vs ETHUSD) detecting institutional accumulation/distribution divergences.
+5. **Tactical Strategy & Contingency Officer:** Precise limit entries, hard stops, tiered TP scaling ($\ge 1:2.5$ R:R), and pre/post-fill invalidation shields.
+6. **Trade Agent (Autonomous Decision Officer):** Independent synthesis of multi-agent telemetry, quantitative conviction scoring (0%–100%), and trade stance formulation (BUY, SELL, STAND ASIDE).
+7. **Risk & Execution Officer:** Delta Exchange MCP gateway with strict capital preservation ($\le \$10.00\text{ USD}$ margin, 200x isolated leverage, atomic brackets).
+8. **Portfolio Surveillance Officer:** Live trade monitoring, automated Breakeven stop advance (+250 pts / TP1), trailing structural locks, and liquidation buffer enforcement.
+9. **Self-Healing Supervisor:** Autonomous circuit breakers, 2-loss 45-minute cooldown freeze, $\ge 15\text{m}$ frame lockdown, and subagent auto-patching.
+10. **Self-Learning Optimizer:** Dynamic ATR buffer calibration, empirical win/loss pattern bank, and continuous updates to `trade_memory.json`.
 
-3.  **Terminal Liquidity Protection (Zero Front-Running Rule):**
-    *   If a major unmitigated 24-hour liquidity pool (e.g. daily high, daily low, Asian high/low) is within 250 points of current price, **DO NOT ENTER COUNTER-TREND TRADES**.
-    *   Wait for price to cleanly sweep the terminal liquidity pool FIRST.
-    *   Wait for the 15-minute candle to close back inside the range (confirming an ICT Turtle Soup / SFP).
-    *   If the 15-minute candle closes with body expansion beyond the level, **STAND ASIDE** as the trend is expanding.
+---
 
-4.  **Full Candle Acceptance Rule (No Wicking / No Premature Triggers):**
-    *   Never enter on an active, open candle ("wick touch").
-    *   Always wait for the 15-minute candle to CLOSE before generating an order signal.
+## 🧭 Core Strategy & Timeframe Hierarchy
 
-## Execution Guardrails (Delta Exchange MCP)
+1. **Timeframe Hierarchy:**
+   - **Macro Bias & Swing Highs/Lows:** 1-Hour (1h) candles.
+   - **Structure Shifts & Entry Confirmation:** 15-Minute (15m) candles. **MANDATORY**: No trade signal is valid without a confirmed 15m candle body close.
+   - **Execution Refinement:** 5-Minute (5m) candles for FVG midpoint (CE) refinement.
+   - *Strict Prohibition:* 1m and 3m candles are strictly prohibited for reversal confirmation.
 
-0.  **Human-in-the-Loop Explicit Confirmation (STRICT & UNBREAKABLE RULE):**
-    *   NO order (market, limit, or bracket) may EVER be submitted to Delta Exchange without EXPLICIT, UNAMBIGUOUS user authorization (e.g. "Execute trade", "Place order", "Yes, proceed").
-    *   User status questions (e.g. "are you starting trading or not", "what is current status?", "is trading started?") are STRICTLY INFORMATIONAL and MUST NEVER be interpreted as execution authorization.
-    *   Subagents (Scenario Architect, Adaptive Strategist, Self-Healing Supervisor) may synthesize setups and release internal clearances, but the Risk Executor is HARD-LOCKED until the user gives direct, written trade approval.
+2. **Killzones (IST Time):**
+   - **London Session:** 12:30 PM – 3:30 PM IST (07:00 – 10:00 UTC)
+   - **New York Session:** 6:30 PM – 9:30 PM IST (13:00 – 16:00 UTC)
+   - *Rule:* Avoid aggressive breakout entries outside of primary killzones unless orderbook depth and volume confirm displacement.
 
-1.  **Risk & Capital Cap:** Maximum $10.00 USD margin allocation per trade at 200x isolated leverage (24 contracts = 0.024 BTC).
-2.  **Minimum Risk-to-Reward:** Strictly $\ge 1:2.5$.
-3.  **Bracket Protection:** Every order MUST have a hard Stop Loss and Take Profit attached upon placement (`place_order` with bracket parameters or `place_bracket_order`).
+3. **Terminal Liquidity Protection (Zero Front-Running Rule):**
+   - If a major unmitigated 24-hour liquidity pool (Daily High, Daily Low, Asian High/Low) is within 250 points of current price, **DO NOT ENTER COUNTER-TREND TRADES**.
+   - Wait for price to cleanly sweep the liquidity pool FIRST.
+   - Wait for the 15-minute candle to close back inside the range (confirming ICT Turtle Soup / Swing Failure Pattern).
+   - If the candle body closes through the level, **STAND ASIDE** as the trend is expanding.
 
-## Dynamic ATR-Based Buffers & Multi-Tier TP Scaling
+4. **Candle Acceptance Rule:**
+   - Never enter on an active, unfinished candle ("wick touch").
+   - Always await the 15-minute candle CLOSE before generating an order trigger.
 
-1.  **Dynamic ATR Stop Loss Buffer:**
-    *   Base stop distance is anchored to the structural swing invalidation level + ATR buffer.
-    *   Buffer formula: $\text{SL Buffer} = \max(50.0, 0.35 \times \text{ATR}_{15m})$.
-    *   During high volatility (ATR > 200 pts), minimum stop buffer expands to 75.0 points to absorb liquidity wicks without invalidating structural thesis.
-2.  **Dynamic Take Profit Scaling:**
-    *   **TP1 (1:2.0 RR):** Secure 50% position profit; immediately advance hard Stop Loss to Entry (Breakeven).
-    *   **TP2 (1:4.0 RR):** Secure 30% position profit; trail hard Stop Loss to the most recent 15m confirmed swing structural low/high.
-    *   **TP3 (1:8.0 RR / Terminal Pool):** Let remaining 20% runner ride to major opposing 24-hour BSL/SSL pool.
+---
 
-## Institutional Memory & Playbook Signatures (`trade_memory.json`)
+## ⚖️ Autonomous Decision Matrix & Conviction Scoring
 
-1.  **A+ Win Signature (Playbook Archetype #1):**
-    *   *Setup:* 15m MSS + unmitigated London/NY FVG + Deep Discount (>50% Fib) + Unmitigated resting BSL pool.
-    *   *Validation:* Confirmed by 15m body close. Resulted in Trade #1 (+914.5 pts / +$21.95 USD / 7.1 RR).
-2.  **Failure Signature (Anti-Pattern Archetype #1):**
-    *   *Hazard:* Micro-timeframe (<15m) premature entry while higher-timeframe sell displacement is actively seeking resting terminal liquidity (e.g. Trades #3 and #4 into $80,240/$80,062 SSL).
-    *   *Remedy:* Block all counter-trend entries within 250 points of terminal liquidity until sweep + 15m SFP close is printed.
+The **Trade Agent** computes an institutional Conviction Score ($0\% \text{ to } 100\%$):
+- **Base Structure & FVG (Scenario Architect):** +30%
+- **Macro News & ETF Net Inflows (Sentiment Analyst):** +20%
+- **Orderbook Depth & Bid/Ask Dominance (Order Flow):** +15%
+- **SMT Intermarket Divergence Confirmation (SMT Analyst):** +15%
+- **Tactical R:R $\ge 1:2.5$ & Clean Invalidation (Adaptive Strategist):** +20%
 
-## Self-Healing Supervisor & Automated Circuit Breakers
+**Decision Thresholds:**
+- **Conviction $\ge 80\%$:** Formulate Trade Proposal (BUY / SELL) and present to User for Rule #0 Authorization.
+- **Conviction $< 80\%$:** Formulate Autonomous Decision: **STAND ASIDE**.
 
-1.  **2-Loss Session Cooldown Freeze:**
-    *   If 2 trades hit Stop Loss within the same Killzone session, trigger an immediate **45-minute trading freeze**.
-    *   During freeze, all new incoming entry signals are rejected. No order placement is permitted.
-2.  **Daily Drawdown Hard Lock:**
-    *   If cumulative daily loss reaches 5% ($10.00 USD), order placement is hard-locked until the next UTC 00:00 rollover.
-3.  **Dynamic Frame Lockdown (Anti-Micro Trap):**
-    *   Sub-15m confirmations (1m/3m) are strictly forbidden. Entry confirmation requires a full 15-minute candle close confirming MSS/CHoCH.
-4.  **Continuous Self-Learning Loop:**
-    *   After every closed position, the SMC Self-Learning subagent ingests the execution log into `trade_memory.json`, recalculates empirical win rates and expectancy, and refines ATR hyperparameters.
+---
+
+## 🛡️ Risk Rules & Delta Exchange MCP Execution
+
+0. **Rule #0 — Human-in-the-Loop Confirmation (STRICT & UNBREAKABLE):**
+   - **NO live order** (market, limit, or bracket) may ever be dispatched to Delta Exchange without direct, explicit, written user approval (e.g. "Execute", "Approve", "Place order").
+   - Status inquiries (e.g. "are you trading", "start trading", "what is status") are informational prompts that trigger multi-agent scanning and analysis, NOT automated order execution.
+1. **Risk Cap:** Strictly $\le \$10.00\text{ USD}$ margin per position at 200x isolated leverage (~24 contracts = 0.024 BTC).
+2. **Minimum R:R:** Strictly $\ge 1:2.5$.
+3. **Atomic Bracket Protection:** All orders must be placed with native stop loss and take profit attached via `delta-exchange-mcp`.
+4. **Automated Breakeven Trailing:** Once price reaches +250 points or hits TP1, the Portfolio Surveillance Officer advances Stop Loss to entry price (Breakeven).
+
+---
+
+## 🧠 Institutional Memory & Playbook Signatures (`trade_memory.json`)
+
+- **A+ Win Archetype:** 15m MSS + unmitigated London/NY FVG + Deep Discount (>50% Fib) + Unmitigated resting BSL pool.
+- **Failure Anti-Pattern:** Premature micro-timeframe (<15m) counter-trend entries into active institutional displacement seeking terminal resting liquidity.
+- **Dynamic ATR Buffer:** $\text{SL Buffer} = \max(50.0, 0.35 \times \text{ATR}_{15m})$.

@@ -12,49 +12,51 @@ The trading system operates as an institutional-grade, multi-agent cooperative n
 
 ```mermaid
 flowchart TD
-    User["Trader / Master Coordinator"]
+    User["Trader / Human-in-the-Loop Gatekeeper"]
 
     subgraph Phase0["0. Fundamental Intelligence"]
         NewsAgent["crypto_news_sentiment_analyst\n• Macro (CPI, Fed, DXY)\n• Spot Bitcoin ETF Net Flows\n• Directional Scoring (-10 to +10)\n• High-Impact Event Risk Halts"]
     end
 
-    subgraph Phase1["1. Technical Structure"]
+    subgraph Phase1["1. Technical Structure & Market Depth"]
         Architect["smc_ict_scenario_architect\n• London (12:30-15:30 IST) & NY Killzones\n• HTF 1h Bias & 50% Equilibrium\n• Liquidity Pools (BSL/SSL)\n• 3-Candle FVGs & Order Blocks"]
+        Orderflow["smc_orderflow_liquidity_tracker\n• L2 Orderbook Depth & Bid/Ask Ratio\n• Open Interest (OI) & Tape Delta\n• Institutional Passive Absorptions"]
+        SMT["smc_smt_divergence_analyst\n• BTCUSD vs ETHUSD Correlation\n• Institutional SMT Footprints\n• +15% - 25% Conviction Multiplier"]
     end
 
-    subgraph Phase2["2. Tactical Formulation"]
+    subgraph Phase2["2. Tactical Strategy Formulation"]
         Strategist["smc_adaptive_strategist\n• Exact Limit Entry & Hard SL\n• Tiered TPs (TP1 1:1.5 RR -> Move SL to BE)\n• Pre-Fill Front-Run Cancel Triggers\n• Post-Fill FVG Inversion Emergency Exits"]
     end
 
-    subgraph Phase3["3. Autonomous Execution"]
-        Executor["smc_risk_executor\n• $10 Max Margin Sizing (24 contracts)\n• 200x Isolated Leverage Validation\n• Delta Exchange Bracket Order Routing"]
+    subgraph Phase3["3. Autonomous Decision Synthesis"]
+        TradeAgent["trade_agent\n• Multi-Agent Telemetry Synthesis\n• Conviction Scoring (0% - 100%)\n• Action: BUY / SELL / STAND ASIDE\n• MANDATORY Human Approval Request"]
     end
 
-    subgraph Phase4["4. Live Surveillance"]
-        Monitor["smc_portfolio_monitor\n• Real-Time Fill & Position Telemetry\n• Trailing SL to Breakeven at TP1\n• Circuit Breaker Execution (Market Close)"]
+    subgraph Phase4["4. Authorized Risk Execution"]
+        Executor["smc_risk_executor\n• Strict <= $10 Margin Cap\n• 200x Isolated Leverage\n• Atomic Bracket Orders (SL + TP OCO)"]
     end
 
-    subgraph Phase5["5. Self-Healing & Supervisory Governance"]
-        Healer["smc_self_healing_supervisor\n• Consecutive Loss Circuit Breaker (45m Freeze)\n• Timeframe & Front-Run Bias Auditor\n• Dynamic Live Strategy Patching\n• Subagent Rule Re-Calibration"]
+    subgraph Phase5["5. Live Portfolio Surveillance"]
+        Surveillance["smc_portfolio_surveillance_officer\n• Real-Time Margin & PnL Monitoring\n• Automated Breakeven Trailing (+250 pts)\n• Dynamic Liquidation Shield (>3000 pts)"]
     end
 
-    subgraph Phase6["6. Self-Learning & Continuous Intelligence Evolution"]
-        Learner["smc_self_learning_optimizer\n• Trade Playbook & Memory Synthesis\n• Win & Failure Signature Modeling\n• Dynamic Hyperparameter Optimization (ATR / R:R)\n• Market Regime Classification"]
+    subgraph Phase6["6. System Governance & Evolution"]
+        Healer["smc_self_healing_supervisor\n• 2-Loss Cooldown Freeze (45m)\n• Frame Lockdown (>= 15m Close)\n• Rule #0 HITL Verification"]
+        Learner["smc_self_learning_optimizer\n• Dynamic ATR-Based Buffers\n• Win/Loss Pattern Memory\n• Trade Memory (.json) Updates"]
     end
 
-    User --> Phase0
-    Phase0 -->|Macro Bias & Event Warning| Phase1
-    Phase1 -->|Market Structure & Scenarios| Phase2
-    Phase2 -->|Tactical Card & Contingency Rules| Phase3
-    Phase3 -->|Active Fills & Orders| Phase4
-    Phase4 -->|Trade Fills & Exit Metrics| Phase5
-    Phase5 -->|Audited Performance Logs| Phase6
-    Phase6 -.->|Evolved Strategy Models & Regime Directives| Phase1
-    Phase6 -.->|Optimized R:R & Invalidation Parameters| Phase2
-    Phase5 -.->|Dynamic Strategy Heals & Invalidation Directives| Phase1
-    Phase5 -.->|Cooldown Freeze & Rule Patches| Phase2
-    Phase4 -.->|Sudden Structural Inversion Alert| Phase2
-    Phase2 -.->|Emergency Abort Signal| Phase3
+    Phase0 --> Architect
+    Architect --> Strategist
+    Orderflow --> Strategist
+    SMT --> Strategist
+    Strategist --> TradeAgent
+    TradeAgent -->|Decision Blueprint & Proposal| User
+    User -->|Explicit Written Authorization| Executor
+    Executor --> Surveillance
+    Surveillance --> Healer
+    Healer --> Learner
+    Learner -.->|Optimized Parameters & ATR Buffers| Strategist
+    Healer -.->|Circuit Breaker & Frame Lockdown| TradeAgent
 ```
 
 ---
