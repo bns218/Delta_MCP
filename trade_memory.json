@@ -3,8 +3,8 @@
   "last_updated": "2026-10-15T13:42:00Z",
   "account_baseline": {
     "starting_equity_usd": 203.45,
-    "current_equity_usd": 194.69,
-    "net_pnl_usd": -8.76,
+    "current_equity_usd": 190.50,
+    "net_pnl_usd": -12.95,
     "gross_trade_pnl_usd": -0.10,
     "net_roi_percent": -4.31,
     "leverage": 200,
@@ -122,6 +122,22 @@
       "setup_type": "15m Discount FVG Re-test",
       "timeframe_anchor": "15m",
       "notes": "Filled at $82,510. Pushed up to $82,543.50 (+33.5 pts profit) before heavy sell sweep broke $82,425 shelf towards $82,308 Equilibrium. Hard SL held firmly at $82,384.50, preventing further drawdown. 2 consecutive losses trigger mandatory 45-minute session cooldown freeze."
+    },
+    {
+      "trade_id": "TRADE_008",
+      "timestamp": "2026-10-20T23:16:58Z",
+      "session": "Asian Session Post-Equilibrium Expansion",
+      "pair": "BTCUSD",
+      "direction": "LONG",
+      "entry_price": 83030.00,
+      "exit_price": 82917.00,
+      "pnl_usd": -2.71,
+      "pnl_pts": -113.00,
+      "result": "LOSS",
+      "risk_reward_realized": -1.0,
+      "setup_type": "15m Asian SFP Retest & Compression Breakout",
+      "timeframe_anchor": "15m",
+      "notes": "Filled at $83,030. Surged to peak $83,148.10 (+118.10 pts / +$2.26 USD / +22.6% ROI), but fell short of $83,280 breakeven trigger and $83,350 TP. Pullback tapped resting stops at $82,917 before instant rebound to $82,960. Hard SL capped loss to -$2.71 USD."
     }
   ],
   "institutional_memory": {
