@@ -126,11 +126,20 @@ The system enforces every core principle across **SMC**, **ICT**, and **Price Ac
   * Minimum R:R filter: Strict rejection of any setup with $< 1:2.5$ R:R.
 * **Execution:** Routes atomic bracket orders to Delta Exchange via MCP (`place_order`) ONLY after written user consent.
 
-### 6. `smc_portfolio_monitor` / `smc_self_healing_supervisor`
-* **Mission:** Active position life-cycle surveillance, consecutive-loss circuit breakers, and systemic health auditing.
+### 6. `smc_self_healing_supervisor`
+* **Mission:** System health scoring (0–100), Killzone session gating, 2-loss consecutive freeze (45m), and Rule #0 HITL gating.
 
 ### 7. `smc_self_learning_optimizer`
 * **Mission:** Ingests trade outcomes into `trade_memory.json`, dynamically calibrates ATR buffers, and classifies active market regimes.
+
+### 8. `smc_orderflow_liquidity_tracker`
+* **Mission:** Real-time orderbook depth ratio, bid/ask walls, Open Interest (OI) velocity, funding rate shifts, and trade tape absorption.
+
+### 9. `smc_smt_divergence_analyst`
+* **Mission:** Intermarket correlation tracking between BTCUSD and ETHUSD; detects institutional SMT divergence accumulation/distribution signatures.
+
+### 10. `smc_portfolio_surveillance_officer`
+* **Mission:** Post-fill trade lifecycle surveillance, automated breakeven trailing at +250 pts / TP1, and liquidation buffer safety enforcement.
 
 ---
 

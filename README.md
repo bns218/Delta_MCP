@@ -3,7 +3,7 @@
 [![Status: Production-Grade](https://img.shields.io/badge/Status-Operational-brightgreen.svg)]()
 [![Exchange: Delta Exchange](https://img.shields.io/badge/Exchange-Delta%20Exchange%20India-blue.svg)]()
 [![Model Context Protocol: Enabled](https://img.shields.io/badge/MCP-delta--exchange--mcp-orange.svg)]()
-[![Architecture: 7--Subagent Fleet](https://img.shields.io/badge/Architecture-7--Subagent%20Fleet-purple.svg)]()
+[![Architecture: 10--Subagent Fleet](https://img.shields.io/badge/Architecture-10--Subagent%20Fleet-purple.svg)]()
 [![Risk: Strict Max Margin Cap](https://img.shields.io/badge/Risk-Max%20$10%20Margin%20Cap-red.svg)]()
 
 Autonomous, institutional-grade algorithmic trading architecture built for **Delta Exchange India** (`BTCUSD` perpetual). The system fuses **Smart Money Concepts (SMC)**, **Inner Circle Trader (ICT)** methodologies, **Classical Price Action**, and **Real-Time Macro & Crypto Sentiment Analysis** into a coordinated multi-agent hierarchy with closed-loop **Self-Healing** and **Self-Learning** capabilities.
@@ -23,49 +23,59 @@ The system operates strictly via specialized AI subagents communicating over the
                            └────────────────────┬────────────────────┘
                                                 │
                                                 ▼
-                           ┌─────────────────────────────────────────┐
-                           │      SMC/ICT Scenario Architect         │
-                           │   • Market Structure Shift (MSS / CHoCH)│
-                           │   • Fair Value Gaps (FVG) & OBs         │
-                           │   • Liquidity Pools (BSL/SSL Sweeps)    │
-                           │   • ICT Killzones (London/NY Opens)     │
-                           └────────────────────┬────────────────────┘
-                                                │
-                                                ▼
-                           ┌─────────────────────────────────────────┐
-                           │   Tactical Strategy & Contingency       │
-                           │   • Limit Order Placement & R:R >= 1:2.5│
-                           │   • Pre-Fill Invalidation Shields       │
-                           │   • Tiered Profit Scaling (TP1, 2, 3)   │
-                           │   • Dynamic FVG Inversion Emergency Cuts│
-                           └────────────────────┬────────────────────┘
-                                                │
-                                                ▼
-                           ┌─────────────────────────────────────────┐
-                           │   Trade Agent (Autonomous Decision)     │
-                           │   • Multi-Agent Decision Synthesis      │
-                           │   • Conviction Scoring (0% - 100%)      │
-                           │   • Action: BUY / SELL / STAND ASIDE    │
-                           │   • MANDATORY Human-in-the-Loop Gate    │
-                           └────────────────────┬────────────────────┘
-                                                │ (User Authorization)
-                                                ▼
-                           ┌─────────────────────────────────────────┐
-                           │       Risk & Execution Officer          │
-                           │   • Strict <= $10 Margin Cap            │
-                           │   • 200x Isolated Leverage              │
-                           │   • Atomic Bracket Orders (SL + TP OCO) │
-                           └────────────────────┬────────────────────┘
-                                                │
-                   ┌────────────────────────────┴────────────────────────────┐
-                   ▼                                                         ▼
-┌───────────────────────────────────────┐         ┌───────────────────────────────────────┐
-│     Self-Healing Supervisor           │         │      Self-Learning Optimizer          │
-│  • Micro-Timeframe Trap Shield        │         │  • Dynamic ATR-Based Stop Buffers     │
-│  • 2-Loss Session Cooldown Freeze     │         │  • A+ Win vs Failure Pattern Memory   │
-│  • Terminal Pool Liquidity Protection │         │  • Market Regime Classification       │
-│  • Autonomous Subagent Auto-Patching  │         │  • Persistent Trade Memory (`.json`)  │
-└───────────────────────────────────────┘         └───────────────────────────────────────┘
+     ┌──────────────────────────────────────────┴──────────────────────────────────────────┐
+     │                                                                                     │
+     ▼                                                                                     ▼
+┌─────────────────────────────────────────┐                           ┌─────────────────────────────────────────┐
+│      SMC/ICT Scenario Architect         │                           │   Order Flow & Liquidity Depth Analyst  │
+│   • Market Structure Shift (MSS / CHoCH)│                           │   • L2 Orderbook Depth & Bid/Ask Ratio  │
+│   • Fair Value Gaps (FVG) & OBs         │                           │   • Open Interest (OI) & Tape Delta     │
+│   • Liquidity Pools (BSL/SSL Sweeps)    │                           │   • Institutional Passive Absorptions   │
+│   • ICT Killzones (London/NY Opens)     │                           └────────────────────┬────────────────────┘
+└────────────────────┬────────────────────┘                                                │
+                     │                                                                     │
+                     ▼                                                                     │
+┌─────────────────────────────────────────┐                                                │
+│   SMT Intermarket Divergence Analyst    │                                                │
+│   • BTCUSD vs ETHUSD Relative Strength  │                                                │
+│   • Bullish / Bearish SMT Footprints    │                                                │
+│   • +15% - 25% Conviction Multiplier    │                                                │
+└────────────────────┬────────────────────┘                                                │
+                     │                                                                     │
+                     ▼                                                                     │
+┌─────────────────────────────────────────┐                                                │
+│   Tactical Strategy & Contingency       │◄───────────────────────────────────────────────┘
+│   • Limit Order Placement & R:R >= 1:2.5│
+│   • Pre-Fill Invalidation Shields       │
+│   • Tiered Profit Scaling (TP1, 2, 3)   │
+│   • Dynamic FVG Inversion Emergency Cuts│
+└────────────────────┬────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────┐
+│   Trade Agent (Autonomous Decision)     │
+│   • Multi-Agent Decision Synthesis      │
+│   • Conviction Scoring (0% - 100%)      │
+│   • Action: BUY / SELL / STAND ASIDE    │
+│   • MANDATORY Human-in-the-Loop Gate    │
+└────────────────────┬────────────────────┘
+                     │ (Explicit User Authorization)
+                     ▼
+┌─────────────────────────────────────────┐                           ┌─────────────────────────────────────────┐
+│       Risk & Execution Officer          │                           │    Portfolio Surveillance Officer       │
+│   • Strict <= $10 Margin Cap            │                           │   • Real-Time Margin & PnL Monitoring   │
+│   • 200x Isolated Leverage              │──────────────────────────►│   • Automated Breakeven Trailing (+250) │
+│   • Atomic Bracket Orders (SL + TP OCO) │                           │   • Dynamic Liquidation Shield (>3000pt)│
+└────────────────────┬────────────────────┘                           └─────────────────────────────────────────┘
+                     │
+     ┌───────────────┴───────────────┐
+     ▼                               ▼
+┌─────────────────────────┐     ┌─────────────────────────┐
+│ Self-Healing Supervisor │     │ Self-Learning Optimizer │
+│ • 2-Loss Cooldown Freeze│     │ • Dynamic ATR Buffers   │
+│ • Frame Lockdown (>=15m)│     │ • Win/Loss Pattern Bank │
+│ • Terminal Pool Shield  │     │ • Trade Memory (.json)  │
+└─────────────────────────┘     └─────────────────────────┘
 ```
 
 ---
@@ -101,6 +111,18 @@ The system operates strictly via specialized AI subagents communicating over the
 7. **[`Self-Learning Optimizer`](.agents/agents/smc_self_learning_optimizer/agent.md)**
    - Ingests settled trade data and updates [`trade_memory.json`](trade_memory.json).
    - Calibrates dynamic ATR buffers, trailing stop mechanics, and regime-based position sizing.
+
+8. **[`Order Flow & Liquidity Depth Analyst`](.agents/agents/smc_orderflow_liquidity_tracker/agent.md)**
+   - Monitors Level-2 orderbook depth, bid/ask imbalance ratios, and Open Interest (OI) acceleration.
+   - Detects institutional passive absorption and resting limit walls to confirm high-probability zones.
+
+9. **[`SMT Intermarket Divergence Analyst`](.agents/agents/smc_smt_divergence_analyst/agent.md)**
+   - Correlates BTCUSD with ETHUSD swing highs and lows across 15m/1h frames.
+   - Flags Smart Money Tool (SMT) divergence footprints, conferring a +15% to +25% conviction bonus to aligned setups.
+
+10. **[`Portfolio Surveillance Officer`](.agents/agents/smc_portfolio_surveillance_officer/agent.md)**
+    - Real-time guardian of active positions and margin utilization.
+    - Autonomously advances stops to Breakeven (+250 points / TP1) and guarantees liquidation distance exceeding 3,000 points.
 
 ---
 
