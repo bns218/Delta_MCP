@@ -3,10 +3,10 @@
   "last_updated": "2026-10-15T13:42:00Z",
   "account_baseline": {
     "starting_equity_usd": 203.45,
-    "current_equity_usd": 202.88,
-    "net_pnl_usd": -0.57,
-    "gross_trade_pnl_usd": 8.08,
-    "net_roi_percent": -0.28,
+    "current_equity_usd": 199.18,
+    "net_pnl_usd": -4.27,
+    "gross_trade_pnl_usd": 4.38,
+    "net_roi_percent": -2.10,
     "leverage": 200,
     "margin_mode": "isolated"
   },
@@ -90,6 +90,22 @@
       "setup_type": "London Judas Swing Bullish SFP / Asian Low Sweep",
       "timeframe_anchor": "15m",
       "notes": "Pushed up +315 points into $82,465 (+$7.56 USD profit), but reversed without tapping $82,710 TP. Hard SL triggered at $81,919.93. Margin buffer successfully prevented premature exchange liquidation."
+    },
+    {
+      "trade_id": "TRADE_006",
+      "timestamp": "2026-10-20T18:05:00Z",
+      "session": "Asian Session Transition",
+      "pair": "BTCUSD",
+      "direction": "LONG",
+      "entry_price": 82740.00,
+      "exit_price": 82647.00,
+      "pnl_usd": -3.70,
+      "pnl_pts": -93.00,
+      "result": "LOSS",
+      "risk_reward_realized": -1.0,
+      "setup_type": "L2 Orderbook Bid Wall Absorption Shelf",
+      "timeframe_anchor": "15m",
+      "notes": "Filled at $82,740. Rebounded to $82,916 (+176 pts / +$4.22 USD peak profit), but fell short of $82,965 TP. Retraced and swept resting stops at $82,647 before immediate bounce back to $82,711. Hard SL strictly capped downside risk to -$3.70 USD."
     }
   ],
   "institutional_memory": {
