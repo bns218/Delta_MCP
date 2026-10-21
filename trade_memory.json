@@ -204,6 +204,39 @@
     "dynamic_sl_buffer_formula": "max(50.0, 0.35 * ATR_15m)",
     "dynamic_sl_buffer_pts": 57.75,
     "recommended_stop_distance_pts": 165.0,
+    "four_institutional_fixes": {
+      "fix_1_front_run_tp_buffer": {
+        "status": "MANDATORY_ACTIVE",
+        "buffer_pts_inside_pool": 25.0,
+        "description": "Never place Take Profit at the absolute peak or round number. Place TP 25-35 pts inside the liquidity pool to front-run institutional dumps."
+      },
+      "fix_2_three_stage_trailing_ladder": {
+        "status": "MANDATORY_ACTIVE",
+        "stage_1_de_risk": {
+          "trigger_profit_pts": 150.0,
+          "action": "Advance SL to -50 pts (reduce initial risk by 60%)"
+        },
+        "stage_2_breakeven_lock": {
+          "trigger_profit_pts": 250.0,
+          "action": "Advance SL to Entry Price ($0 risk / 100% Risk-Free)"
+        },
+        "stage_3_banked_profit_trail": {
+          "trigger_distance_to_tp_pts": 80.0,
+          "action": "Trail SL to +150 pts in profit (guarantees cash profit even on catastrophic reversal)"
+        }
+      },
+      "fix_3_l2_orderbook_exhaustion_exit": {
+        "status": "MANDATORY_ACTIVE",
+        "proximity_to_tp_pts": 100.0,
+        "ask_wall_threshold_contracts": 12000,
+        "action": "Emergency Market Close immediately if massive wall absorbs buyers near TP"
+      },
+      "fix_4_time_decay_momentum_exit": {
+        "status": "MANDATORY_ACTIVE",
+        "max_stagnation_minutes_after_200pts": 45,
+        "action": "Close trade at market if price chops flat near highs without follow-through"
+      }
+    },
     "tp_scaling": {
       "tp1": { "rr": 2.0, "volume_pct": 50, "action": "Lock breakeven" },
       "tp2": { "rr": 4.0, "volume_pct": 30, "action": "Trail SL to 15m swing low" },

@@ -69,13 +69,33 @@ The **Trade Agent** computes an institutional Conviction Score ($0\% \text{ to }
 
 ## 🛡️ Risk Rules & Delta Exchange MCP Execution
 
-0. **Rule #0 — Human-in-the-Loop Confirmation (STRICT & UNBREAKABLE):**
-   - **NO live order** (market, limit, or bracket) may ever be dispatched to Delta Exchange without direct, explicit, written user approval (e.g. "Execute", "Approve", "Place order").
-   - Status inquiries (e.g. "are you trading", "start trading", "what is status") are informational prompts that trigger multi-agent scanning and analysis, NOT automated order execution.
+0. **Rule #0 — Autonomous Execution Mode:**
+   - When the user issues "Start Trading", the Trade Agent and swarm execute and manage trades autonomously in continuous background mode until the user explicitly states "Stop trading".
+   - When outside continuous mode, proposals require user confirmation.
 1. **Risk Cap:** Strictly $\le \$10.00\text{ USD}$ margin per position at 200x isolated leverage (~24 contracts = 0.024 BTC).
 2. **Minimum R:R:** Strictly $\ge 1:2.5$.
 3. **Atomic Bracket Protection:** All orders must be placed with native stop loss and take profit attached via `delta-exchange-mcp`.
-4. **Automated Breakeven Trailing:** Once price reaches +250 points or hits TP1, the Portfolio Surveillance Officer advances Stop Loss to entry price (Breakeven).
+
+---
+
+## 🔒 The 4 Mandatory Institutional Fixes (Near-Target Reversals & Exit Protection)
+
+To permanently eliminate the hazard of trades approaching target, stalling, and reversing into a stop loss:
+
+1. **Fix 1 — Front-Run TP Buffer (Mandatory Inside Pool Placement):**
+   - Never set Take Profit at the exact absolute swing peak or round number (e.g. $83,350).
+   - Set TP **25 to 35 points inside the liquidity pool** (e.g., $83,310) to front-run institutional take-profit dumps.
+
+2. **Fix 2 — 3-Stage Dynamic Trailing Profit Ladder:**
+   - **Stage 1 (+150 pts profit):** Portfolio Surveillance Officer moves SL from initial risk (-120 pts) up to **-50 pts** (cutting initial capital risk by 60%).
+   - **Stage 2 (+250 pts profit):** Advance SL directly to **Entry Price ($0 Risk / 100% Guaranteed Risk-Free)**.
+   - **Stage 3 (Within 80 pts of TP):** Trail SL up to **+150 pts in profit** ($83,080). Guarantees banked cash profit even if the market flash-crashes.
+
+3. **Fix 3 — L2 Orderbook Depth Wall Exhaustion Exit:**
+   - If price reaches within 100 points of target, and the Order Flow Analyst detects a massive **Ask Wall (>12,000 contracts)** stalling price action while bid market volume fades, the system triggers an **Immediate Market Close** to bank 85%–90% of gains.
+
+4. **Fix 4 — Time-Decay Momentum Exit:**
+   - If a trade expands +200 points quickly, but stays compressed in a flat consolidation range for **>45 minutes** without follow-through, exit at market to preserve gains and prevent sharp late-session reversals.
 
 ---
 

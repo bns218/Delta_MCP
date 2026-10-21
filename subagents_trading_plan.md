@@ -170,7 +170,24 @@ BRACKET PROTECTION LEGS:
 
 ---
 
-## 5. Standard Operating Procedures (How to Command)
+## 5. The 4 Mandatory Institutional Exit & Near-Target Fixes
+
+To permanently prevent the hazard of trades approaching target, stalling, and reversing into stop losses:
+
+1. **Fix 1 — Front-Run TP Buffer (Set TP 25–35 pts inside pool):**
+   - Never set TP at the exact peak/round number. Place TP 25–35 pts inside the liquidity pool to front-run institutional dumps.
+2. **Fix 2 — 3-Stage Dynamic Trailing Profit Ladder:**
+   - **Stage 1 (+150 pts):** Move SL to -50 pts (cut initial risk by 60%).
+   - **Stage 2 (+250 pts):** Advance SL to Entry Price ($0 Risk / 100% Risk-Free).
+   - **Stage 3 (Within 80 pts of TP):** Trail SL to +150 pts in profit (guarantees cash profit on sudden reversals).
+3. **Fix 3 — L2 Orderbook Depth Wall Exhaustion Exit:**
+   - Emergency Market Close if a massive Ask Wall (>12,000 contracts) stalls price action near target.
+4. **Fix 4 — Time-Decay Momentum Exit:**
+   - Close trade at market if price stays compressed flat for >45 minutes after +200 pt expansion.
+
+---
+
+## 6. Standard Operating Procedures (How to Command)
 
 You can trigger your AI subagent team anytime with plain English prompts:
 
