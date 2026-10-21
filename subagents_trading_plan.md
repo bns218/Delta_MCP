@@ -96,59 +96,85 @@ Incorporating the institutional timeframe blueprint:
 
 ---
 
-## 3. The 4 Active Institutional Trading Modes
+## 3. Dynamic Scenario-Driven Mode Engine (Zero Static Fixing — Autonomous Mode Auto-Updating)
 
-The swarm operates across **all 4 execution modes** simultaneously, dynamically deploying the appropriate setup based on current market regime:
+By user directive, **the trading system is NEVER locked or fixed to 4 static modes**. Financial markets are non-stationary, evolving across distinct volatility, liquidity, and directional regimes. The swarm employs an **Autonomous Market Regime & Mode Auto-Updater**:
 
+```mermaid
+flowchart TD
+    MarketData["Live Delta Exchange Market Data\n(Candles 15m/5m/1m, L2 Orderbook, OI, Tape)"]
+    
+    subgraph RegimeDetection["Real-Time Scenario Diagnosis (Scenario Architect + Orderflow)"]
+        Diagnosis{"Diagnose Market Scenario\n• Trend Displacement vs Compression?\n• Liquidity Sweep vs Breakout?\n• High Volatility vs Low Liquidity?"}
+    end
+
+    subgraph DynamicModes["Autonomously Auto-Updated Modes"]
+        M1["Mode: Trend Expansion Displacement\n(Killzone Volume & Aggressive Retests)"]
+        M2["Mode: Liquidity Sweep SFP (Turtle Soup)\n(24h High/Low Pinbars & Mean Reversal)"]
+        M3["Mode: Range Compression & Mean-Reversion\n(Value Area Extremes to 50% Equilibrium)"]
+        M4["Mode: Corrective Channel & OTE Pullback\n(61.8%-78.6% Fib & FVG Mitigations)"]
+        M5["Mode: High-Impact News & Volatility Absorption\n(Post-Displacement Breaker Blocks)"]
+        M6["Mode: SMT Intermarket Dislocation\n(BTC/ETH Asymmetric Divergence)"]
+        M_Dynamic["Mode: Custom Real-Time Synthesized Mode\n(Tailored to Novel Emerging Price Action)"]
+    end
+
+    subgraph AutoExecution["Dynamic Execution Calibration (Adaptive Strategist)"]
+        Calibration["Auto-Update Parameters On-the-Fly:\n• Precision Entry: Limit vs Momentum Market Fill\n• Dynamic Invalidation: Tight Wick vs Displacement Origin\n• Multi-Target Scaling: 3-Tier Targets (TP1, TP2, TP3)\n• Trailing Ladder Distances Adapted to ATR"]
+    end
+
+    MarketData --> Diagnosis
+    Diagnosis -->|Expansion Regime| M1
+    Diagnosis -->|Sweep / False Break| M2
+    Diagnosis -->|Chop / Low Volatility| M3
+    Diagnosis -->|Measured Retracement| M4
+    Diagnosis -->|News Volatility Spike| M5
+    Diagnosis -->|Correlated Divergence| M6
+    Diagnosis -->|Unprecedented Conditions| M_Dynamic
+    M1 --> Calibration
+    M2 --> Calibration
+    M3 --> Calibration
+    M4 --> Calibration
+    M5 --> Calibration
+    M6 --> Calibration
+    M_Dynamic --> Calibration
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                      THE 4 INSTITUTIONAL TRADING MODES                   │
-├───────────────────┬───────────────────┬───────────────────┬─────────────┤
-│      MODE A       │      MODE B       │      MODE C       │   MODE D    │
-│   Discount SFP    │ Momentum Breakout │   Premium Sweep   │ Multi-Tier  │
-│     Reversal      │   Continuation    │    Short Sale     │ Target Scale│
-│  (Turtle Soup)    │(Trend Expansion)  │ (Two-Way Trading) │(Profit Lock)│
-└───────────────────┴───────────────────┴───────────────────┴─────────────┘
-```
 
-### Mode A: Discount SFP Reversal (Turtle Soup Longs)
-* **Market Condition:** Price sweeps below a major swing low, previous session low, or discount liquidity pool (SSL) and fails to close below it.
-* **15m Trigger:** 15m rejection pinbar / wick sweep back into the range (Swing Failure Pattern).
-* **3m/1m Trigger:** 1m/3m bullish market structure shift (CHoCH) with displacement candle printing a bullish Fair Value Gap (BISI).
-* **Entry:** Limit order at the consequent encroachment (50% midpoint) or top edge of the 1m/3m FVG.
-* **Stop Loss:** 15–25 points below the sweep wick low (strict risk cap $\le \$5.00$ to $\$10.00$).
-* **Target:** Opposite Buy-Side Liquidity (BSL) or 15m Premium FVG ($R:R \ge 1:3.0$).
+### Dynamic Regime Library & Auto-Updating Protocol:
 
-### Mode B: Momentum Breakout Continuation (Trend Displacement)
-* **Market Condition:** Clean institutional displacement with massive volume pushing through key resistance/support during active Killzones (London 12:30–15:30 IST / New York 18:30–21:30 IST).
-* **15m Trigger:** Full 15m candle body close above a swing high (Bullish BOS) or below a swing low (Bearish BOS) accompanied by expanding Open Interest.
-* **3m/1m Trigger:** Retracement into the newly created 3m/1m Breakaway Gap or Breaker Block that does not fill completely.
-* **Entry:** Market/limit entry on the first 1m retest of the Breaker Block.
-* **Stop Loss:** Below the displacement candle base.
-* **Target:** 1.618 and 2.618 Fibonacci extensions of the breakout range ($R:R \ge 1:2.5$).
+1. **Trend Expansion Displacement Mode (Auto-Activated on Clean Momentum):**
+   - *Scenario:* Strong Killzone directional expansion with expanding Open Interest, 15m body close BOS, and orderbook bid/ask depth ratio $> 1.5\text{x}$.
+   - *Tactic:* Rides momentum pullbacks into 1m/3m Breaker Blocks and Fair Value Gaps. Targets 1.618 Fib extensions.
 
-### Mode C: Two-Way Directional Trading & Short Selling (Premium Sweeps)
-* **Market Condition:** Price rallies into premium zones (>50% of the range), testing major session highs, 24h highs, or Buy-Side Liquidity (BSL).
-* **15m Trigger:** Bearish rejection wick / 15m shooting star / bearish displacement candle closing below the high.
-* **3m/1m Trigger:** 1m/3m bearish market structure shift (lower low print) and bearish Fair Value Gap (SIBI).
-* **Entry:** Limit sell at the bearish FVG / Order Block mitigation zone.
-* **Stop Loss:** 15–25 points above the sweep high.
-* **Target:** Internal Sell-Side Liquidity (SSL) and discount equilibrium ($R:R \ge 1:2.5$ to $1:4.0$).
+2. **Liquidity Sweep SFP / Turtle Soup Mode (Auto-Activated on False Breakouts):**
+   - *Scenario:* Price sweeps a major 24h high/low or session level, prints a rejection wick, and fails to close beyond the level on 15m.
+   - *Tactic:* Enters aggressive counter-trend reversals upon 1m/3m CHoCH confirmation. Targets opposing liquidity pools with tight invalidation stops.
 
-### Mode D: 3-Tier Multiple Target Scaling & Profit Harvesting (TP1, TP2, TP3)
-* **Target Partitioning Strategy (e.g. 24 Contracts Standard Size):**
-  - **TP1 (Conservative De-risker — 40% / 10 contracts):**
-    - Set at $+150\text{ to }+200\text{ pts}$ ($1:1.5\text{ to }1:2.0\text{ R:R}$).
-    - *Action upon hit:* Banks initial cash profit, covers all maker/taker commissions, and automatically triggers the surveillance officer to advance the hard Stop Loss of the remaining 14 contracts to **Breakeven (\$0 risk)**.
-  - **TP2 (Primary Institutional Liquidity Pool — 35% / 8 contracts):**
-    - Set at the primary swing pool sweep (Session High/Low, Asian High/Low, or unmitigated 15m FVG, $+350\text{ to }+450\text{ pts}$ / $1:3.0\text{ to }1:3.5\text{ R:R}$).
-    - *Action upon hit:* Banks the core payload and trails the Stop Loss of the remaining 6 contracts to **+$150 pts in locked profit**.
-  - **TP3 (HTF Trend Expansion Runner — 25% / 6 contracts):**
-    - Set at the HTF $50\%$ equilibrium or 1.618 Fibonacci expansion extension ($+600\text{ to }+900\text{ pts}$ / $1:5.0+\text{ R:R}$).
-    - *Action upon hit:* Captures institutional macro continuation moves completely risk-free, trailing dynamically behind every consecutive 15m swing pivot until final target fill.
-* **Delta Exchange Execution Architecture:**
-  - Placed via individual `reduce_only: true` limit orders partitioned into 10 / 8 / 6 contract sizes.
-  - As each target fills, the primary Stop Loss leg is dynamically downsized and trailed upwards.
+3. **Range Compression & Mean-Reversion Mode (Auto-Activated in Consolidation):**
+   - *Scenario:* Price trapped in Asian session or midday consolidation with low ATR and balanced orderbook depth.
+   - *Tactic:* Trades range extremes (Value Area High / Low) targeting the 50% Equilibrium. Employs tight stop losses and modest, rapid targets.
+
+4. **Corrective Channel & OTE Retracement Mode (Auto-Activated in Multi-Wave Pullbacks):**
+   - *Scenario:* Orderly, low-volume corrective pullbacks against a confirmed 1h trend.
+   - *Tactic:* Places passive limit orders at the Optimal Trade Entry zone (0.618–0.786 Fibonacci) confluent with unmitigated 15m Fair Value Gaps.
+
+5. **High-Impact News & Volatility Absorption Mode (Auto-Activated on Macro Spikes):**
+   - *Scenario:* Sudden violent wicks caused by macroeconomic news, Fed statements, or ETF flow surprises.
+   - *Tactic:* Waits for the initial exhaustion flush to complete, identifying institutional absorption wicks on L2 depth, then enters the mitigation of the resulting Breaker Block.
+
+6. **SMT Intermarket Dislocation Mode (Auto-Activated on BTC/ETH Divergence):**
+   - *Scenario:* Bitcoin makes a new low while Ethereum holds a higher low (or vice-versa).
+   - *Tactic:* Front-runs retail order flow by siding with the unmanipulated asset, adding a $+15\%\text{--}25\%$ conviction weighting.
+
+7. **Autonomous Dynamic Mode Synthesis (Novel Emerging Scenarios):**
+   - The subagents are granted full autonomy to synthesize, name, and tune new operational modes on-the-fly whenever novel market structures appear, ensuring zero rigidity and 100% adaptability to the living market.
+
+---
+
+### 3-Tier Multiple Target Scaling Across All Dynamic Modes (TP1, TP2, TP3)
+Regardless of which dynamic mode is auto-selected, every position executes a 3-tier profit-harvesting framework (e.g. 24 contracts divided into 10 / 8 / 6 contracts):
+- **TP1 (40% Size / 10 contracts):** $+150\text{ to }+200\text{ pts}$ $\rightarrow$ Banks first profit and moves SL to **Breakeven (\$0 risk)**.
+- **TP2 (35% Size / 8 contracts):** $+350\text{ to }+450\text{ pts}$ $\rightarrow$ Banks core payload and trails SL to **+$150 pts in locked cash profit**.
+- **TP3 (25% Size / 6 contracts):** $+600\text{ to }+900+\text{ pts}$ $\rightarrow$ Runner trailing dynamically behind 15m swing pivots into macro expansions.
 
 ---
 

@@ -36,6 +36,10 @@ Your mission is to perform institutional-grade technical analysis by combining:
    - Price must completely sweep the pool, and the 15m candle must close back inside the range (Turtle Soup / SFP) before any counter-trend trade can be validated.
 3. **Full Candle Acceptance Rule:**  
    - Confirmation requires a candle CLOSE, not an intraday wick touch. If a 15m candle closes with body displacement through a level, declare trend continuation, NOT reversal.
+4. **Dynamic Market Scenario Classification & Mode Auto-Updating (Zero Static Lock):**
+   - NEVER lock or restrict analysis to rigid, fixed modes. Markets are dynamic and non-stationary.
+   - Actively diagnose the live market scenario and automatically classify the real-time regime (e.g. Trend Displacement, Liquidity Sweep SFP, Range Compression Mean-Reversion, News Volatility Absorption, Corrective Retracement OTE, SMT Divergence Dislocation, Parabolic Exhaustion).
+   - Auto-update and dispatch the detected Regime & Recommended Operational Mode dynamically to the Adaptive Strategist on every cycle.
 
 When analyzing a symbol:
 - Step 1: Check Current Session and Killzone status.
