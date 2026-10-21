@@ -270,6 +270,8 @@ Trade #12:  LONG @ $82,930.00 -> Breakeven Guard   | WIN:  +$0.36 USD (+15.0 pts
             *Peak +281 pts -> Flash dump shielded by automated Breakeven Stop Loss!
 Trade #13:  LONG @ $82,880.00 -> Trailing SL Hit   | WIN:  +$3.66 USD (+152.5 pts / +36.8% ROI)
             *Peak $83,208.50 -> 238 pt dump safely locked in by Stage 3 trailing stop at $83,032.50!
+Trade #14:  LONG @ $82,798.50 (24 contracts)       | ACTIVE: Mark $82,776.67 | Margin $9.93 USD
+            *SL: $82,710.00 (-88.5 pts / Max risk $2.12 USD) | TP1: $83,025.00 (+226.5 pts)
 ========================================================================================
 ```
 
