@@ -135,11 +135,20 @@ The swarm operates across **all 4 execution modes** simultaneously, dynamically 
 * **Stop Loss:** 15–25 points above the sweep high.
 * **Target:** Internal Sell-Side Liquidity (SSL) and discount equilibrium ($R:R \ge 1:2.5$ to $1:4.0$).
 
-### Mode D: Multi-Tier Target Scaling & Profit Harvesting
-* **Protocol:** Used across all active positions to eliminate give-back risk and systematically bank profits:
-  - **Tier 1 (TP1 at +150–200 pts / 1:1.5 R:R):** Scale out 40%–50% of position size; advance Stop Loss to Breakeven ($0 risk).
-  - **Tier 2 (TP2 at Primary Liquidity Pool / 1:3.0 R:R):** Close 30% of position size; trail Stop Loss into +150 pts locked cash profit.
-  - **Tier 3 (TP3 Runner / 1:5.0+ R:R):** Let the remaining 20%–30% run toward HTF equilibrium, trailing the Stop Loss behind each consecutive 15m swing low (for longs) or swing high (for shorts).
+### Mode D: 3-Tier Multiple Target Scaling & Profit Harvesting (TP1, TP2, TP3)
+* **Target Partitioning Strategy (e.g. 24 Contracts Standard Size):**
+  - **TP1 (Conservative De-risker — 40% / 10 contracts):**
+    - Set at $+150\text{ to }+200\text{ pts}$ ($1:1.5\text{ to }1:2.0\text{ R:R}$).
+    - *Action upon hit:* Banks initial cash profit, covers all maker/taker commissions, and automatically triggers the surveillance officer to advance the hard Stop Loss of the remaining 14 contracts to **Breakeven (\$0 risk)**.
+  - **TP2 (Primary Institutional Liquidity Pool — 35% / 8 contracts):**
+    - Set at the primary swing pool sweep (Session High/Low, Asian High/Low, or unmitigated 15m FVG, $+350\text{ to }+450\text{ pts}$ / $1:3.0\text{ to }1:3.5\text{ R:R}$).
+    - *Action upon hit:* Banks the core payload and trails the Stop Loss of the remaining 6 contracts to **+$150 pts in locked profit**.
+  - **TP3 (HTF Trend Expansion Runner — 25% / 6 contracts):**
+    - Set at the HTF $50\%$ equilibrium or 1.618 Fibonacci expansion extension ($+600\text{ to }+900\text{ pts}$ / $1:5.0+\text{ R:R}$).
+    - *Action upon hit:* Captures institutional macro continuation moves completely risk-free, trailing dynamically behind every consecutive 15m swing pivot until final target fill.
+* **Delta Exchange Execution Architecture:**
+  - Placed via individual `reduce_only: true` limit orders partitioned into 10 / 8 / 6 contract sizes.
+  - As each target fills, the primary Stop Loss leg is dynamically downsized and trailed upwards.
 
 ---
 
