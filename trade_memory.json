@@ -3,8 +3,8 @@
   "last_updated": "2026-10-15T13:42:00Z",
   "account_baseline": {
     "starting_equity_usd": 203.45,
-    "current_equity_usd": 190.50,
-    "net_pnl_usd": -12.95,
+    "current_equity_usd": 189.38,
+    "net_pnl_usd": -14.07,
     "gross_trade_pnl_usd": -0.10,
     "net_roi_percent": -4.31,
     "leverage": 200,
@@ -138,6 +138,22 @@
       "setup_type": "15m Asian SFP Retest & Compression Breakout",
       "timeframe_anchor": "15m",
       "notes": "Filled at $83,030. Surged to peak $83,148.10 (+118.10 pts / +$2.26 USD / +22.6% ROI), but fell short of $83,280 breakeven trigger and $83,350 TP. Pullback tapped resting stops at $82,917 before instant rebound to $82,960. Hard SL capped loss to -$2.71 USD."
+    },
+    {
+      "trade_id": "TRADE_009",
+      "timestamp": "2026-10-21T01:00:55Z",
+      "session": "Asian Killzone",
+      "pair": "BTCUSD",
+      "direction": "LONG",
+      "entry_price": 82930.00,
+      "exit_price": 82945.00,
+      "pnl_usd": 0.36,
+      "pnl_pts": 15.00,
+      "result": "WIN",
+      "risk_reward_realized": 0.12,
+      "setup_type": "15m SFP Rejection + Breakeven Lock Shield",
+      "timeframe_anchor": "15m",
+      "notes": "Textbook Breakeven Lock in action! Entered at $82,930. Surged to peak $83,211.30 (+281 pts / +$5.83 USD / +58.6% ROI). System automatically advanced Stop Loss to entry ($82,930). When market reversed before tapping $83,310 TP, the Breakeven Stop triggered at $82,945.00, banking +$0.36 USD profit and completely eliminating capital risk."
     }
   ],
   "institutional_memory": {
