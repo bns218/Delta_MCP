@@ -268,8 +268,8 @@ Trade #1:   LONG @ $80,593.50 -> TP @ $81,508.00  | WIN:  +$21.95 USD (+914.5 pt
 Trades #2-8: Controlled Test Validations           | CAPPED: Small controlled risk tests (-$1 to -$5)
 Trade #12:  LONG @ $82,930.00 -> Breakeven Guard   | WIN:  +$0.36 USD (+15.0 pts / Protected +$2.88)
             *Peak +281 pts -> Flash dump shielded by automated Breakeven Stop Loss!
-Trade #13:  LONG @ $82,880.00 (24 contracts)       | ACTIVE: Mark $83,047.65 (+$4.03 USD / +40.5% ROI)
-            *Stop Loss actively trailed to $82,830.00 (Risk slashed by 60% via Stage 1 ladder)
+Trade #13:  LONG @ $82,880.00 -> Trailing SL Hit   | WIN:  +$3.66 USD (+152.5 pts / +36.8% ROI)
+            *Peak $83,208.50 -> 238 pt dump safely locked in by Stage 3 trailing stop at $83,032.50!
 ========================================================================================
 ```
 
