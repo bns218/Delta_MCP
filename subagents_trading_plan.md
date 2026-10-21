@@ -187,7 +187,17 @@ To permanently prevent the hazard of trades approaching target, stalling, and re
 
 ---
 
-## 6. Standard Operating Procedures (How to Command)
+## 6. Multi-Mode Institutional Trading Matrix (ALL MODES ACTIVE)
+
+By user directive, the swarm activates all 4 institutional execution modes dynamically:
+* **Mode A — Discount SFP Reversal (Turtle Soup Longs):** Buys discount liquidity sweeps with 15m bullish pinbar confirmation.
+* **Mode B — Momentum Breakout Continuation (Trend Expansion):** Rides aggressive Killzone volume displacement through key levels into 1.618 Fib extensions.
+* **Mode C — Two-Way Directional Trading & Short Selling (Premium Sweeps):** Shorts sweeps of 24h Highs / Asian High BSL with confirmed 15m bearish rejection.
+* **Mode D — Multi-Tier Target Scaling & Profit Harvesting:** Locks 50% at TP1 (+150-200 pts) and trails the remaining 50% behind 15m pivots.
+
+---
+
+## 7. Standard Operating Procedures (How to Command)
 
 You can trigger your AI subagent team anytime with plain English prompts:
 

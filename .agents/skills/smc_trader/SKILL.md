@@ -40,7 +40,39 @@ The trading desk operates as an interconnected AI hierarchy:
    - **New York Session:** 6:30 PM – 9:30 PM IST (13:00 – 16:00 UTC)
    - *Rule:* Avoid aggressive breakout entries outside of primary killzones unless orderbook depth and volume confirm displacement.
 
-3. **Terminal Liquidity Protection (Zero Front-Running Rule):**
+---
+
+## 🔄 Multi-Mode Institutional Trading Matrix (ALL MODES ACTIVE)
+
+The swarm dynamically detects the active market regime and selects between 4 specialized execution modes:
+
+### 🟢 Mode A — Discount SFP / Turtle Soup Reversal (Mean Reversion)
+- **When Active:** Range-bound markets, Asian consolidation, or discount liquidity sweeps below key session lows.
+- **Direction:** **BUY (Long)** after Sell-Side Liquidity (SSL) sweep with confirmed 15m bullish rejection wick.
+- **Entry:** Limit order at the discount breaker / unmitigated FVG.
+- **Target:** Asian High / Session BSL pool.
+
+### 🚀 Mode B — Momentum Breakout & Trend Continuation (Expansion)
+- **When Active:** Strong trending Killzone displacement with high institutional volume and Open Interest surges.
+- **Direction:** **BUY or SELL** in the direction of the 1h/15m trend displacement.
+- **Entry:** Limit order at the Fair Value Gap (FVG) creation zone immediately upon candle close.
+- **Target:** Next higher-timeframe expansion pool (1.618 Fib extension).
+
+### 🔴 Mode C — Two-Way Directional Trading & Short Selling (Premium Sweeps)
+- **When Active:** When price rallies into major Buy-Side Liquidity (BSL), Asian Highs, or 24h Highs and prints a Bearish SFP / MSS body rejection.
+- **Direction:** **SELL (Short)** from extreme premium into discount equilibrium.
+- **Entry:** Limit sell at the premium breaker or bearish FVG.
+- **Target:** 50% Macro Equilibrium or resting Sell-Side Liquidity (SSL).
+
+### 🎯 Mode D — Multi-Tier Target Scaling & Profit Harvesting
+- **When Active:** High-conviction impulse trades.
+- **Scaling Structure:**
+  - **TP1 (+150 to +200 pts):** Harvest 50% position, move SL to breakeven.
+  - **TP2 (+350 to +500 pts):** Trail remaining 50% behind 15m higher-low swing pivots to terminal liquidity.
+
+---
+
+## 3. Terminal Liquidity Protection (Zero Front-Running Rule):
    - If a major unmitigated 24-hour liquidity pool (Daily High, Daily Low, Asian High/Low) is within 250 points of current price, **DO NOT ENTER COUNTER-TREND TRADES**.
    - Wait for price to cleanly sweep the liquidity pool FIRST.
    - Wait for the 15-minute candle to close back inside the range (confirming ICT Turtle Soup / Swing Failure Pattern).
